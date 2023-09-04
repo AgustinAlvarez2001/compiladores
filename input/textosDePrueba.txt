@@ -1,0 +1,31 @@
+if(2>1){
+    ++;
+}
+else{
+    --;
+}
+
+juanjuan
+juan juan
+
+15:00 15:59 16:25 16:31 17:42 15:512 15:61 15:/22 dfdf15:22 115:07
+
+/////////Expresiones de prueba//////////////////////
+
+JUAN : ('juan')+ ;
+| JUAN   { System.out.println("\nHay juan ->" + $JUAN.getText() + "<--"); }  s
+
+// fragment COMPARACION : (.+('<' | '>' | '<=' | '>=' | '==').+);
+fragment Menor : ('<');
+fragment Mayor : ('>');
+fragment MenorIgual : ('<=');
+fragment MayorIgual : ('>=');
+fragment Igual : ('==');
+SII : ('if')COMPARACION('{').+('}') ;
+COMPARACION : ('('.+(Menor | Mayor | MenorIgual | MayorIgual | Igual).+')');
+
+| COMPARACION  { System.out.println("\nHay comparacion ->" + $COMPARACION.getText() + "<--"); } s
+| SII   { System.out.println("\nHay if -> " + $SII.getText() + "<--"); }     s
+
+HORA : '15:'[0-5][0-9] | '16:'([0-2][0-9] | '30') ; //Hora entre 15:00 y 16:30
+| HORA   { System.out.println("\nHora ->" + $HORA.getText() + "<--"); }      s
